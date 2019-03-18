@@ -8,8 +8,6 @@ body {
     overflow-y: scroll;
 }
 .data-container {
-    background-color: #fff;
-    border-radius: 4px;
     padding-bottom: 10px;
     height: 680px;
 }
@@ -24,4 +22,23 @@ body {
     padding-bottom: 10px;
     text-align: center;
     margin-top: 0px !important;
+}
+.content-wrapper {
+    background-color: #fff;
+    border-radius: 4px;
+}
+.chat-entry {
+    word-wrap: break-word;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+.chat-entry {
+    border-top: #eee 1.5px solid;
+}
+
+.chat-entry:first-child {
+    border-top: none;
+}
+h4 {
+    margin-bottom: 0px;
 }
