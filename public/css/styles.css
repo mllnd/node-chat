@@ -17,7 +17,7 @@ body {
 .user-list a {
     padding: 6px 10px !important;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
 }
 .chat-heading {
     border-bottom: #eee 1.5px solid;
@@ -38,7 +38,6 @@ body {
 .chat-entry {
     border-top: #eee 1.5px solid;
 }
-
 .chat-entry:first-child {
     border-top: none;
 }

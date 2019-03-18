@@ -34,39 +34,30 @@
                     <div class="col-md-10">
                         <div class="content-wrapper">
                             <h4 class="chat-heading">A simple chatroom which utilizes socket.io</h4>
-                            <div class="data-container scrollable">
+                            <div class="data-container scrollable" id="chat-wrapper">
                                 <div class="col-md-12">
-                                    <div id="chat">
-                                        <div class="chat-entry"><span class="chat-entry-user"><b>User 1:</b></span><br><span class="chat-entry-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                                        <div class="chat-entry"><span class="chat-entry-user"><b>User 2:</b></span><br><span class="chat-entry-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                                    </div>
+                                    <div id="chat"></div>
                                 </div>
                             </div>
-                            <div class="input-group">
-                                <input type="text" class="form-control chat-input" placeholder="Message...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success send-message-button" type="button">Send</button>
-                                </span>
-                            </div><!-- /input-group -->
+                            <form id="chat-message-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control chat-input" autocomplete="off" name="message" placeholder="Message...">
+                                    <span class="input-group-btn">
+                                        <input class="btn btn-success send-message-button" type="submit" value="Send"/>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            var socket = io();
+        </script>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-           /* Script block */
-        </script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>
