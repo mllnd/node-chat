@@ -9,7 +9,10 @@ body {
 }
 .data-container {
     padding-bottom: 10px;
-    height: 680px;
+    height: 600px;
+}
+.data-container-users {
+    min-height: 675px;
 }
 .user-list a {
     padding: 6px 10px !important;
@@ -41,4 +44,19 @@ body {
 }
 h4 {
     margin-bottom: 0px;
+}
+.chat-input {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border: #eee 1px solid;
+}
+.send-message-button {
+    border-top-right-radius: 0px;
+    border: #eee 1px solid;
+}
+.send-message-button:hover {
+    border: #eee 1px solid;
+}
+.send-message-button:active {
+    border: #eee 1px solid;
 }
