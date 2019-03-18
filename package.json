@@ -1,0 +1,15 @@
+{
+  "name": "node-chat",
+  "version": "1.0.0",
+  "description": "A simple realtime chat which utilizes websockets using socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Markkus Millend",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}

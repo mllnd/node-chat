@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>A simple socket.io chat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style type="text/css">
+            body {
+                font-family: 'Lato', sans-serif;
+            }
+            .nav-pills li a {
+                border-radius: 0px;
+            }
+            .scrollable {
+                overflow-y: scroll;
+            }
+            .data-container {
+                background-color: #fff;
+                border-radius: 4px;
+                padding-bottom: 10px;
+                height: 680px;
+            }
+            .user-list a {
+                padding: 6px 10px !important;
+                font-weight: bold;
+                text-align: center;
+            }
+            .chat-heading {
+                border-bottom: #eee 1.5px solid;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                text-align: center;
+                margin-top: 0px !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" style="padding-top: 40px;">
+            <div class="row">
+                <div class="col-md-12 well" style="min-height: 700px">
+                    <div class="col-md-2">
+                        <div class="data-container scrollable">
+                            <h4 class="chat-heading">Active users</h4>
+                            <ul class="nav nav-pills nav-stacked user-list">
+                                <li><a href="#">User 1</a></li>
+                                <li><a href="#">User 2</a></li>
+                                <li><a href="#">User 3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="data-container">
+                            <h4 class="chat-heading">A simple chatroom which utilizes socket.io</h4>
+                            <div id="chat">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+           /* Script block */
+        </script>
+    </body>
+</html>
