@@ -1,0 +1,27 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+.nav-pills li a {
+    border-radius: 0px;
+}
+.scrollable {
+    overflow-y: scroll;
+}
+.data-container {
+    background-color: #fff;
+    border-radius: 4px;
+    padding-bottom: 10px;
+    height: 680px;
+}
+.user-list a {
+    padding: 6px 10px !important;
+    font-weight: bold;
+    text-align: center;
+}
+.chat-heading {
+    border-bottom: #eee 1.5px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: 0px !important;
+}
