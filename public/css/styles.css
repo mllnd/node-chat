@@ -19,11 +19,19 @@ body {
     font-weight: bold;
     text-align: left;
 }
-.chat-heading {
+.chat-users-heading {
     border-bottom: #eee 1.5px solid;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
+    margin-top: 0px !important;
+}
+.chat-info-heading {
+    border-bottom: #eee 1.5px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    text-align: left;
     margin-top: 0px !important;
 }
 .content-wrapper {
@@ -58,4 +66,15 @@ h4 {
 }
 .send-message-button:active {
     border: #eee 1px solid;
+}
+.nickname-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.intro-text {
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 300;
 }

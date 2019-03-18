@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>A simple socket.io chat</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,35 +19,45 @@
     <body>
         <div class="container" style="padding-top: 40px;">
             <div class="row">
-                <div class="col-md-12 well">
-                    <div class="col-md-2">
-                        <div class="content-wrapper data-container-users">
-                            <h4 class="chat-heading">Active users</h4>
-                            <div class="data-container scrollable">
-                                <ul class="nav nav-pills nav-stacked user-list">
-                                    <li><a href="#">User 1</a></li>
-                                    <li><a href="#">User 2</a></li>
-                                    <li><a href="#">User 3</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="nickname-input">
+                    <div class="nickname-input-wrapper">
+                        <form id="nickname-form">
+                            <h4 class="intro-text">Enter a nickname and press enter to join the chat</h4>
+                            <input type="text" autocomplete="off" name="nickname" class="form-control input-lg" placeholder="Nickname">
+                        </form>
                     </div>
-                    <div class="col-md-10">
-                        <div class="content-wrapper">
-                            <h4 class="chat-heading">A simple chatroom which utilizes socket.io</h4>
-                            <div class="data-container scrollable" id="chat-wrapper">
-                                <div class="col-md-12">
-                                    <div id="chat"></div>
+                </div>
+                <div class="chat-cover" style="display: none;">
+                    <div class="col-md-12 well">
+                        <div class="col-md-2">
+                            <div class="content-wrapper data-container-users">
+                                <h4 class="chat-users-heading">Active users</h4>
+                                <div class="data-container scrollable">
+                                    <ul class="nav nav-pills nav-stacked user-list">
+                                        <li><a href="#">User 1</a></li>
+                                        <li><a href="#">User 2</a></li>
+                                        <li><a href="#">User 3</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <form id="chat-message-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control chat-input" autocomplete="off" name="message" placeholder="Message...">
-                                    <span class="input-group-btn">
-                                        <input class="btn btn-success send-message-button" type="submit" value="Send"/>
-                                    </span>
-                                </div><!-- /input-group -->
-                            </form>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="content-wrapper">
+                                <h4 class="chat-info-heading">There are currently 0 users connected</h4>
+                                <div class="data-container scrollable" id="chat-wrapper">
+                                    <div class="col-md-12">
+                                        <div id="chat"></div>
+                                    </div>
+                                </div>
+                                <form id="chat-message-form">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control chat-input" autocomplete="off" name="message" placeholder="Message...">
+                                        <span class="input-group-btn">
+                                            <input class="btn btn-success send-message-button" type="submit" value="Send"/>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
