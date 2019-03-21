@@ -1,10 +1,9 @@
 $(function() {
     // Initialize variables
-    var user_count = 0;
     var user_list = [];
     var socket = io();
     // Set the user count
-    $('#user-count').text(user_count);
+    $('#user-count').text(user_list.length);
 
     $('#chat-message-form').submit(function(event) {
         var message = $('input[name="message"]').val();
@@ -21,33 +20,36 @@ $(function() {
         if (nickname.length > 0) {
             $('input[name="nickname"]').attr('disabled', 'disabled');
             socket.emit('user-join', nickname);
-            getUsers();
             animate('.nickname-input-wrapper', 'fadeOutUp', function() {
                 $('.nickname-input').hide();
                 $('.chat-cover').fadeIn();
+                getUsers();
             })
             // $('input[name="nickname"]').val('');
         }
     });
 
-    socket.on('user-login', function(data) {
-        $('#user-count').text(data.user_count);
-        if ($.inArray(data.nickname, user_list) == -1) {
-            user_list.push(data.nickname);
-            var li = $('<li>', {nickname: data.nickname}).append($('<a>', {href: '#'}).text(data.nickname));
-            $('.nav.user-list').append(li)
+    socket.on('user-login', function(nickname) {
+        if ($.inArray(nickname, user_list) == -1) {
+            user_list.push(nickname);
+            var li = $('<li>', {nickname: nickname}).append($('<a>', {href: '#'}).text(nickname));
+            $('.nav.user-list').append(li);
+            $('#user-count').text(user_list.length);
         }
     });
 
-    socket.on('user-logout', function(data) {
-        $('#user-count').text(data.user_count);
-        user_list.splice(user_list.indexOf(data.nickname), 1);
-        $('.nav.user-list li[nickname="'+data.nickname+'"]').remove();
+    socket.on('user-logout', function(nickname) {
+        user_list.splice(user_list.indexOf(nickname), 1);
+        $('#user-count').text(user_list.length);
+        $('.nav.user-list li[nickname="'+nickname+'"]').remove();
     })
 
-    socket.on('chat-message', function(message) {
+    socket.on('chat-message', function(data) {
         $wrapper = $('#chat-wrapper');
-        var div = $('<div>', {class: 'chat-entry'}).append($('<span>', {class: 'chat-entry-text'}).text(message));
+        var div = $('<div>', {class: 'chat-entry'});
+        div.append($('<span>', {class: 'chat-entry-user'}).html('<b>'+data.nickname+'</b>'));
+        div.append($('<br>'));
+        div.append($('<span>', {class: 'chat-entry-text'}).text(data.message));
         $('#chat').append(div);
         $wrapper.animate({scrollTop: $wrapper[0].scrollHeight}, 'slow');
     });
@@ -60,7 +62,8 @@ $(function() {
                     if ($.inArray(data[i], user_list) == -1) {
                         user_list.push(data[i]);
                         var li = $('<li>', {nickname: data[i]}).append($('<a>', {href: '#'}).text(data[i]));
-                        $('.nav.user-list').append(li)
+                        $('.nav.user-list').append(li);
+                        $('#user-count').text(user_list.length);
                     }
                 }
             }

@@ -7,7 +7,6 @@ var port = 3000;
 // Serve files from public folder
 app.use(express.static('public'));
 
-var user_count = 0;
 var user_list = [];
 
 app.get('/users', function(request, response) {
@@ -16,30 +15,25 @@ app.get('/users', function(request, response) {
 
 io.on('connection', function(socket) {
     var connected_user = false;
-    socket.on('chat-message', function(message) {
-        io.emit('chat-message', message);
-        // console.log('Message: '+message);
-    });
     socket.on('user-join', function(nickname) {
         if (connected_user) return;
         socket.nickname = nickname;
-        ++user_count;
         user_list.push(nickname);
         connected_user = true;
-        io.emit('user-login', {
-            'nickname': nickname,
-            'user_count': user_list.length
+        io.emit('user-login', nickname);
+    });
+    socket.on('chat-message', function(message) {
+        io.emit('chat-message', {
+            message: message,
+            nickname: socket.nickname
         });
+        // console.log('Message: '+message);
     });
     socket.on('disconnect', function() {
         if (connected_user) {
-            --user_count;
             connected_user = false;
             user_list.splice(user_list.indexOf(socket.nickname), 1);
-            io.emit('user-logout', {
-                'nickname': socket.nickname,
-                'user_count': user_list.length
-            });
+            io.emit('user-logout', socket.nickname);
         }
     })
 });
