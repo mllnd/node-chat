@@ -78,3 +78,11 @@ h4 {
     padding-bottom: 10px;
     font-weight: 300;
 }
+.blinking {
+    animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

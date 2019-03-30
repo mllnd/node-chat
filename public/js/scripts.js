@@ -46,13 +46,13 @@ $(function() {
 
     socket.on('typing', function(data) {
         var nickname_object = $('.nav.user-list li[nickname="'+data.nickname+'"]');
-        // var appendable;
-        if (data.typing && !nickname_object.attr('typing')) {
+        if (data.typing && nickname_object.find('i').length == 0) {
             nickname_object.attr('typing', true);
+            nickname_object.find('a').append('<i style="margin-left: 5px;" class="blinking fa fa-keyboard-o"></i>');
         } else {
-            // appendable = ''
+            nickname_object.attr('typing', false);
+            nickname_object.find('i').remove();
         }
-        // $('.nav.user-list li[nickname="'+nickname+'"]').append(data.nickname);
     });
 
     socket.on('user-login', function(nickname) {
