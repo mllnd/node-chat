@@ -2,6 +2,9 @@ $(function() {
     // Initialize variables
     var user_list = [];
     var socket = io();
+    var typing = false;
+    var timeout;
+
     // Set the user count
     $('#user-count').text(user_list.length);
 
@@ -27,6 +30,29 @@ $(function() {
             })
             // $('input[name="nickname"]').val('');
         }
+    });
+
+    function timeoutCallback() {
+        typing = false;
+        socket.emit('typing-client', false);
+    }
+
+    $('input[name="message"]').keyup(function() {
+        typing = true;
+        socket.emit('typing-client', true);
+        clearTimeout(timeout);
+        timeout = setTimeout(timeoutCallback, 2000);
+    });
+
+    socket.on('typing', function(data) {
+        var nickname_object = $('.nav.user-list li[nickname="'+data.nickname+'"]');
+        // var appendable;
+        if (data.typing && !nickname_object.attr('typing')) {
+            nickname_object.attr('typing', true);
+        } else {
+            // appendable = ''
+        }
+        // $('.nav.user-list li[nickname="'+nickname+'"]').append(data.nickname);
     });
 
     socket.on('user-login', function(nickname) {

@@ -29,6 +29,12 @@ io.on('connection', function(socket) {
         });
         // console.log('Message: '+message);
     });
+
+    socket.on('typing-client', function(typing) {
+        io.emit('typing', {nickname: socket.nickname, typing: typing});
+        console.log(socket.nickname+' is typing a message...');
+    });
+
     socket.on('disconnect', function() {
         if (connected_user) {
             connected_user = false;
