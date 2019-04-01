@@ -4,6 +4,7 @@ $(function() {
     var socket = io();
     var typing = false;
     var timeout;
+    var client_nickname;
 
     // Set the user count
     $('#user-count').text(user_list.length);
@@ -21,14 +22,8 @@ $(function() {
         var nickname = $('input[name="nickname"]').val();
         event.preventDefault();
         if (nickname.length > 0) {
-            $('input[name="nickname"]').attr('disabled', 'disabled');
+            client_nickname = nickname;
             socket.emit('user-join', nickname);
-            animate('.nickname-input-wrapper', 'fadeOutUp', function() {
-                $('.nickname-input').hide();
-                $('.chat-cover').fadeIn();
-                getUsers();
-            })
-            // $('input[name="nickname"]').val('');
         }
     });
 
@@ -56,12 +51,24 @@ $(function() {
     });
 
     socket.on('user-login', function(nickname) {
+        if (client_nickname == nickname) {
+            animate('.nickname-input-wrapper', 'fadeOutUp', function() {
+                $('input[name="nickname"]').attr('disabled', 'disabled');
+                $('.nickname-input').hide();
+                $('.chat-cover').fadeIn();
+            })
+        }
+        getUsers();
         if ($.inArray(nickname, user_list) == -1) {
             user_list.push(nickname);
             var li = $('<li>', {nickname: nickname}).append($('<a>', {href: '#'}).text(nickname));
             $('.nav.user-list').append(li);
             $('#user-count').text(user_list.length);
         }
+    });
+
+    socket.on('chat-error', function(message) {
+        alert(message);
     });
 
     socket.on('user-logout', function(nickname) {

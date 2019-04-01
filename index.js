@@ -17,10 +17,15 @@ io.on('connection', function(socket) {
     var connected_user = false;
     socket.on('user-join', function(nickname) {
         if (connected_user) return;
-        socket.nickname = nickname;
-        user_list.push(nickname);
-        connected_user = true;
-        io.emit('user-login', nickname);
+        if (user_list.indexOf(nickname) > -1) {
+            socket.emit('chat-error', 'Nickname already taken!');
+            return;
+        } else {
+            socket.nickname = nickname;
+            user_list.push(nickname);
+            connected_user = true;
+            io.emit('user-login', nickname);
+        }
     });
     socket.on('chat-message', function(message) {
         io.emit('chat-message', {
